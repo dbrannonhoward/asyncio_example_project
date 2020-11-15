@@ -1,0 +1,44 @@
+in order to behave in an async manner, need to be able to suspend/resume
+    python methods to suspend & resume functions
+        callbacks, generators, async/await, greenlet extension
+async impact on python standard library
+    functions which naturally force blocks are incompatible with async frameworks
+        networking : socket.*, select.*, processes/threads : subprocess.*, os.waitpid,
+        threading : threading.*, multiprocessing.*, sleep : time.sleep
+    async has alternatives for each of these
+generators vs coroutines
+    in general.. (not a rule)
+        generators produce data
+        coroutines consume data
+generators
+    contains one or more yield functions
+    when called remains in a paused state
+    next(generator) to 'step'
+    must be primed, only once
+        1. send None to generator, or
+        2. next(generator)
+    must be generator.close() at finish
+    can generator.throw() to throw exception
+yield
+    PEP 342 introduced as 'expression'
+        -> can be used on 'right side' of func
+    yield from
+        allows delegation to sub-generator, nested-generators
+        acts as a tunnel to pass data
+coroutines
+    to declare, async await
+    meant to be driven by something else, not directly called?
+        for example, sending None drives a coroutine
+native coroutine syntax
+    to declare, async def
+
+
+
+
+
+
+
+
+
+
+# / eof / #
